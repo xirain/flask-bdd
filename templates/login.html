@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Flask - BDD</h1>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{message}}</div>
+    {% endfor %}
+    <h3>Login</h3>
+    {% if error %} 
+      <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+    <form action="{{ url_for('login') }}" method="post">
+        <dl>
+            <dt>Username:</dt>
+            <dd><input type="text" name="username"></dd>
+            <dt>Password:</dt>
+            <dd><input type="password" name="password"></dd>
+            <br>
+            <br>
+            <dd><input type="submit" class="btn btn-default" value="Login"></dd>
+            <span>User "admin" for the username and password</span>
+        </dl>
+    </form>
+</div>
+
+{% endblock %}
